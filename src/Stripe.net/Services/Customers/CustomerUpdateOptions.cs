@@ -1,8 +1,8 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CustomerUpdateOptions : BaseOptions
     {
@@ -33,11 +33,18 @@ namespace Stripe
         [JsonProperty("shipping")]
         public ShippingOptions Shipping { get; set; }
 
+        /// <summary>
+        /// A Token’s or a Source’s ID, as returned by
+        /// <a href="https://stripe.com/docs/elements">Elements</a>. Passing <c>source</c> will
+        /// create a new source object, make it the new customer default source, and delete the old\
+        /// customer default if one exists. If you want to add additional sources instead of
+        /// replacing the existing default, use
+        /// <see cref="CardService.Create(string, CardCreateOptions, RequestOptions)"/>. Whenever
+        /// you attach a card to a customer, Stripe will automatically validate the card.
+        /// </summary>
         [JsonProperty("source")]
-        public string SourceToken { get; set; }
-
-        [JsonProperty("source")]
-        public CardCreateNestedOptions SourceCard { get; set; }
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         [JsonProperty("tax_info")]
         public CustomerTaxInfoOptions TaxInfo { get; set; }
