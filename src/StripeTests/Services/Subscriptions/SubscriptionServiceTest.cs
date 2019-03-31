@@ -47,8 +47,11 @@ namespace StripeTests
                 },
             };
 
+            var updatedItems = new NonConsecutiveList<SubscriptionItemUpdateOption>();
+            updatedItems[1] = new SubscriptionItemUpdateOption { Id = "si_123", ClearUsage = true };
             this.updateOptions = new SubscriptionUpdateOptions
             {
+                Items = updatedItems,
                 Metadata = new Dictionary<string, string>
                 {
                     { "key", "value" },
