@@ -163,8 +163,15 @@ namespace Stripe
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [Obsolete("Use TaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// The tax rates which apply to the subscription.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
 
         [JsonProperty("transfer_data")]
         public SubscriptionTransferData TransferData { get; set; }

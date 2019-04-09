@@ -103,6 +103,14 @@ namespace Stripe
         }
         #endregion
 
+        /// <summary>
+        /// The customer’s tax exempt status. Until the invoice is finalized, this field will equal
+        /// customer.tax_exempt. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_tax_exempt")]
+        public string CustomerTaxExempt { get; set; }
+
         #region Expandable DefaultSource
         [JsonIgnore]
         public string DefaultSourceId { get; set; }
@@ -229,8 +237,15 @@ namespace Stripe
         [JsonProperty("tax")]
         public long? Tax { get; set; }
 
+        [Obsolete("Use TaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// Tax rates applied to the invoice.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
         /// If <code>billing_reason</code> is set to <code>subscription_threshold</code> this
@@ -238,6 +253,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("threshold_reason")]
         public InvoiceThresholdReason ThresholdReason { get; set; }
+
+        /// <summary>
+        /// The tax amounts which apply to this invoice.
+        /// </summary>
+        [JsonProperty("total_tax_amounts")]
+        public List<InvoiceTaxAmount> TotalTaxAmounts { get; set; }
 
         [JsonProperty("transfer_data")]
         public InvoiceTransferData TransferData { get; set; }

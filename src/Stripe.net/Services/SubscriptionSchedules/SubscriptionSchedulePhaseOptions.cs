@@ -50,8 +50,15 @@ namespace Stripe
         /// and added as tax to the final amount each billing period. For example, a plan which
         /// charges $10/month with a <code>tax_percent</code> of 20.0 will charge $12 per invoice.
         /// </summary>
+        [Obsolete("Use TaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// Ids of the tax rates to apply to this phase on the subscription schedule.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
         /// If set to <code>true</code> the entire phase is counted as a trial and the customer

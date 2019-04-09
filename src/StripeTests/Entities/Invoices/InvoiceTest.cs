@@ -30,6 +30,7 @@ namespace StripeTests
               "charge",
               "customer",
               "subscription",
+              "total_tax_amounts.tax_rate"
             };
 
             string json = this.GetFixture("/v1/invoices/in_123", expansions);
@@ -47,6 +48,9 @@ namespace StripeTests
 
             Assert.NotNull(invoice.Subscription);
             Assert.Equal("subscription", invoice.Subscription.Object);
+
+            Assert.NotNull(invoice.TotalTaxAmounts[0].TaxRate);
+            Assert.Equal("tax_rate", invoice.TotalTaxAmounts[0].TaxRate.Object);
         }
     }
 }

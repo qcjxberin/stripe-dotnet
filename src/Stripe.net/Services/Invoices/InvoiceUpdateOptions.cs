@@ -57,8 +57,15 @@ namespace Stripe
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
+        [Obsolete("Use TaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// Ids of the tax rates to apply to this invoice.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
 
         [JsonProperty("transfer_data")]
         public InvoiceTransferDataOptions TransferData { get; set; }

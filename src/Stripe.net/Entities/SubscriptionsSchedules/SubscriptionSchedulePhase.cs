@@ -70,8 +70,15 @@ namespace Stripe
         /// If provided, each invoice created during this phase of the subscription schedule will
         /// apply the tax rate, increasing the amount billed to the customer.
         /// </summary>
+        [Obsolete("Use TaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// The tax rates which apply to the phase of this subscription schedule.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
         /// When the trial ends within the phase.

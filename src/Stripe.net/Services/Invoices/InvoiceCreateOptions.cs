@@ -89,8 +89,15 @@ namespace Stripe
         /// <summary>
         /// The percent tax rate applied to the invoice, represented as a decimal number.
         /// </summary>
+        [Obsolete("Use TaxRates")]
         [JsonProperty("tax_percent")]
         public decimal? TaxPercent { get; set; }
+
+        /// <summary>
+        /// Ids of the tax rates to apply to this invoice.
+        /// </summary>
+        [JsonProperty("tax_rates")]
+        public List<TaxRate> TaxRates { get; set; }
 
         [JsonProperty("transfer_data")]
         public InvoiceTransferDataOptions TransferData { get; set; }
