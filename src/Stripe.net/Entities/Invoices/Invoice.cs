@@ -103,6 +103,38 @@ namespace Stripe
         }
         #endregion
 
+        /// <summary>
+        /// The customer’s address. Until the invoice is finalized, this field will equal
+        /// <c>customer.address</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_address")]
+        public Address CustomerAddress { get; set; }
+
+        /// <summary>
+        /// The customer’s name. Until the invoice is finalized, this field will equal
+        /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_name")]
+        public string CustomerName { get; set; }
+
+        /// <summary>
+        /// The customer’s phone number. Until the invoice is finalized, this field will equal
+        /// <c>customer.phone</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_phone")]
+        public string CustomerPhone { get; set; }
+
+        /// <summary>
+        /// The customer’s shipping information. Until the invoice is finalized, this field will
+        /// equal <c>customer.shipping</c>. Once the invoice is finalized, this field will no
+        /// longer be updated.
+        /// </summary>
+        [JsonProperty("customer_shipping")]
+        public Shipping CustomerShipping { get; set; }
+
         #region Expandable DefaultPaymentMethod
 
         /// <summary>

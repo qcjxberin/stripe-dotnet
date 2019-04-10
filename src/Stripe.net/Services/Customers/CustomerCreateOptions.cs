@@ -10,6 +10,12 @@ namespace Stripe
         [JsonProperty("account_balance")]
         public long? AccountBalance { get; set; }
 
+        /// <summary>
+        /// The customer’s address.
+        /// </summary>
+        [JsonProperty("address")]
+        public AddressOptions Address { get; set; }
+
         [JsonProperty("coupon")]
         public string CouponId { get; set; }
 
@@ -28,8 +34,26 @@ namespace Stripe
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// The customer’s full name or business name.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The customer’s phone number.
+        /// </summary>
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
         [JsonProperty("plan")]
         public string PlanId { get; set; }
+
+        /// <summary>
+        /// The customer’s preferred locales (languages), ordered by preference.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
 
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
